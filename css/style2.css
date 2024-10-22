@@ -81,6 +81,67 @@ body {
     transform: rotate(-45deg);
 }
 
+.nosotros{
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 50px 8% 0;
+}
+
+.nosotros-content{
+    max-width: 630px;
+}
+
+.nosotros-content h1{
+    font-size: 50px;
+    line-height: 1.2;
+}
+
+.nosotros-content h3{
+    font-size: 40px;
+    color: #780000;
+}
+
+.nosotros-content p{
+    font-size: 16px;
+    margin: 15px 0 30px;
+}
+
+.btn.contacto {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #780000;
+    border: 2px solid #780000;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); 
+    font-size: 16px;
+    color: #eaeaea;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn.contacto:hover{
+    background: transparent;
+    color: #780000;
+    transition: .5s;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+
+.mi-imagen {
+    width: 70%;
+    max-width: 70%; 
+    height: auto; 
+}
+
+
 .footer2 {
     text-align: center;
     color: #222;
