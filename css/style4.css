@@ -52,7 +52,7 @@ body {
 }
 
 .social-media{
-    width: 150px;
+    width: 200px;
     height: 40px;
     justify-content: space-between;
     display: flex;
@@ -79,6 +79,79 @@ body {
     font-size: 24px;
     color: #780000;
     transform: rotate(-45deg);
+}
+
+.nosotros{
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 50px 8% 0;
+    justify-content: space-between;
+}
+
+.nosotros-content{
+    width: 700px;
+    height: 50vh;
+}
+
+.nosotros-content h1{
+    font-size: 50px;
+    line-height: 1.5;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column; 
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
+}
+
+.form input, 
+.form textarea {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0; 
+    color: #333;
+}
+
+.form input:focus, 
+.form textarea:focus {
+    background-color: #e0e0e0; 
+    outline: none; 
+    box-shadow: 0 0 5px #780000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #780000;
+    border: 2px solid #780000;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); 
+    font-size: 16px;
+    color: #eaeaea;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: transparent;
+    color: #780000;
+    transition: .5s;
 }
 
 .footer4 {

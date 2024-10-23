@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,6 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    
   </head>
   <body>
     <header class="header">
@@ -21,18 +20,71 @@
         <a href="index.html">Inicio</a>
         <a href="index2.html">Nosotros</a>
         <a href="index3.html">Encuestas</a>
-        <a href="index4.html"  class="active">Contacto</a>
+        <a href="index4.html" class="active">Contacto</a>
       </nav>
 
       <div class="social-media">
+        <a href="https://github.com/Diegomarte9/SurveySystem"><i class="bx bxl-github"></i></a>
         <a href=""><i class="bx bxl-twitter"></i></a>
         <a href=""><i class="bx bxl-facebook"></i></a>
         <a href=""><i class="bx bxl-instagram-alt"></i></a>
       </div>
     </header>
 
+    <section class="nosotros">
+      <div class="nosotros-content">
+        <h1>Contactanos.</h1>
+        <p>
+          Dejanos saber cualquier duda o pregunta que tengas acerca de nuestro
+          sistema de encuesta o empresa.
+        </p>
+        <form class="form" action="https://formspree.io/f/mvgogqvn" method="POST">
+          <label>
+            Nombre:
+            <input type="text" placeholder="Ingrese su nombre" name="name" required>
+          </label>
+  
+          <label>
+            Telefono:
+            <input type="tel" placeholder="Ingrese su numero de telefono" name="phone" required>
+          </label>
+  
+          <label>
+            Email:
+            <input type="email" placeholder="Ingrese su email" name="email" required>
+          </label>
+
+  
+          <label>
+            Mensaje:
+            <textarea placeholder="Ingrese su mensaje" name="message" required></textarea>
+          </label>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.242499508134!2d-69.9409414!3d18.472671699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89e4e39a2ab5%3A0x98df0764eaed40ca!2sBlueMall%20Santo%20Domingo!5e0!3m2!1ses-419!2sdo!4v1729695827010!5m2!1ses-419!2sdo"
+          width="700"
+          height="650"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+    </section>
+
     <footer class="footer4">
-    &copy; 2024 Marte Developers - Todos los derechos registrados
+      &copy; 2024 Marte Developers - Todos los derechos registrados
     </footer>
+
+    <script>
+      const form = document.getElementById('contactForm');
+  
+      form.addEventListener('submit', function(event) {
+  
+        form.reset();
+      });
+    </script>
+
   </body>
 </html>
