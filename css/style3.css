@@ -34,16 +34,22 @@ body {
     color: #222;
     text-decoration: none;
     font-weight: 600;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+
 }
 
 .navbar a {
+    display: inline-flex;
     font-size: 18px;
     color: #222;
     text-decoration: none;
     font-weight: 500;
     margin: 0 20px;
     transition: .3s;
-
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
 }
 
 .navbar a:hover,
@@ -69,6 +75,9 @@ body {
     text-decoration: none;
     transform: rotate(45deg);
     transition: .5s;
+    opacity: 0;
+    animation: slideSci .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
 }
 
 .social-media a:hover{
@@ -81,9 +90,60 @@ body {
     transform: rotate(-45deg);
 }
 
-.footer3 {
+.footer{
     text-align: center;
     color: #222;
-    padding: 25px 0;
-    margin-top: auto;
+    padding: 25px;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+/*Transiciones*/
+
+@keyframes slideRight{
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft{
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop{
+    0%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideSci{
+    0% {
+        transform: translateX(100px) rotate(45deg);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0) rotate(45deg);
+        opacity: 1;
+    }
 }
