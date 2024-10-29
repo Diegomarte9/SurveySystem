@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
-*{
+:root {
+    --text-color: #222;
+    --container-bg: #ffffff;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,34 +15,31 @@
 
 body {
     background: #eaeaea;
-    min-height: 100vh; 
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 8%;
+    padding: 20px 8%;
     background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-
 }
 
-.logo{
+.logo {
     font-size: 25px;
-    color: #222;
+    color: #780000;
     text-decoration: none;
     font-weight: 600;
     opacity: 0;
     animation: slideRight 1s ease forwards;
-
 }
 
 .navbar a {
@@ -45,49 +48,107 @@ body {
     color: #222;
     text-decoration: none;
     font-weight: 500;
-    margin: 0 20px;
-    transition: .3s;
+    margin: 0 15px;
+    transition: color 0.3s;
     opacity: 0;
-    animation: slideTop .5s ease forwards;
-    animation-delay: calc(.2s * var(--i));
+    animation: slideTop 0.5s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
 }
 
 .navbar a:hover,
-.navbar a.active{
+.navbar a.active {
     color: #780000;
 }
 
-.social-media{
-    width: 200px;
-    height: 40px;
-    justify-content: space-between;
+.main-content {
+    flex: 1;
     display: flex;
-}
-
-.social-media a{
-    display: inline-flex;
-    width: 40px;
-    height: 40px;
-    align-items: center;
     justify-content: center;
-    background: transparent;
-    border: 2px solid transparent;
-    text-decoration: none;
-    transform: rotate(45deg);
-    transition: .5s;
-    opacity: 0;
-    animation: slideSci .5s ease forwards;
-    animation-delay: calc(.2s * var(--i));
+    align-items: center;
 }
 
-.social-media a:hover{
-    border-color: #780000;
+.form-content {
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);;
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
 }
 
-.social-media a i{
-    font-size: 24px;
+.form-content h1 {
+    font-size: 28px;
     color: #780000;
-    transform: rotate(-45deg);
+    margin-bottom: 20px;
+}
+
+.form-content p {
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #222;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.preguntasContainer h3{
+    color: #660000;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.btn-agregar{
+    display: inline-block;
+    padding: 10px 28px;
+    background: #780000;
+    border: 2px solid #780000;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); 
+    font-size: 16px;
+    color: #eaeaea;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-agregar:hover{
+    background-color: #660000;
+}
+
+.btn-enviar {
+    padding: 15px;
+    margin-top: 50px;
+    background-color: #780000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 500px;
+
+}
+
+.btn-enviar:hover {
+    background-color: #660000;
 }
 
 .footer{
@@ -98,51 +159,35 @@ body {
     animation: slideRight 1s ease forwards;
 }
 
-/*Transiciones*/
-
-@keyframes slideRight{
-    0% {
+/* Animaciones */
+@keyframes slideRight {
+    from {
         transform: translateX(-100px);
         opacity: 0;
     }
-
-    100%{
+    to {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
-@keyframes slideLeft{
-    0% {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-
-    100%{
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideTop{
-    0%{
+@keyframes slideTop {
+    from {
         transform: translateY(100px);
         opacity: 0;
     }
-
-    100%{
+    to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-@keyframes slideSci{
-    0% {
+@keyframes slideSci {
+    from {
         transform: translateX(100px) rotate(45deg);
         opacity: 0;
     }
-
-    100%{
+    to {
         transform: translateX(0) rotate(45deg);
         opacity: 1;
     }
