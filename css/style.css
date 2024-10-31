@@ -9,6 +9,8 @@
 
 body{
     background: #eaeaea;
+    background: linear-gradient(to right, #e2e2e2, #B0413E);
+
 }
 
 .header{
@@ -37,7 +39,7 @@ body{
 
 .navbar a {
     display: inline-flex;
-    font-size: 18px;
+    font-size: 20px;
     color: #222;
     text-decoration: none;
     font-weight: 500;
