@@ -1,33 +1,44 @@
-const bcrypt = require('bcryptjs');
-const { Pool } = require('pg');
-const pool = require('../models/db'); // Conexión a la base de datos
+const bcrypt = require("bcryptjs");
+const { Pool } = require("pg");
+const pool = require("../models/db"); // Conexión a la base de datos
 
 // Registrar un nuevo usuario
 exports.registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
-
   try {
-    // Verificar si el correo ya está registrado
-    const emailCheckQuery = "SELECT * FROM users WHERE email = $1";
-    const emailCheckResult = await pool.query(emailCheckQuery, [email]);
+    const { name, email, password } = req.body;
 
-    if (emailCheckResult.rows.length > 0) {
-      return res.status(400).json({ error: "Este correo electrónico ya está registrado" });
+    // Validación de datos (opcional)
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "Todos los campos son obligatorios" });
     }
 
-    // Encriptar la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Verificar si el usuario ya existe
+    const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
 
-    // Insertar usuario en la base de datos
-    const insertUserQuery = "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id";
-    const result = await pool.query(insertUserQuery, [name, email, hashedPassword]);
+    if (result.rows.length > 0) {
+      return res.status(400).json({ error: "El usuario ya existe" });
+    }
 
-    // Crear sesión para el usuario
-    req.session.userId = result.rows[0].id;
-    res.redirect("/dashboard"); // Redirigir al dashboard
+    // Encriptar la contraseña antes de almacenarla
+    const hashedPassword = await bcrypt.hash(password, 10); // Encriptación con bcrypt
+
+    // Insertar el nuevo usuario en la base de datos
+    const insertResult = await pool.query(
+      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id",
+      [name, email, hashedPassword] // Usar la contraseña encriptada
+    );
+
+    const userId = insertResult.rows[0].id;
+
+    return res.status(201).json({
+      message: "Usuario registrado exitosamente",
+      userId: userId,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Hubo un error al registrar el usuario" });
+    console.error("Error en registro de usuario:", error);
+    return res.status(500).json({ error: "Ocurrió un error al registrar al usuario" });
   }
 };
 
@@ -44,14 +55,13 @@ exports.loginUser = async (req, res) => {
     }
 
     const user = userResult.rows[0];
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password); // Comparar la contraseña encriptada
 
     if (!isMatch) {
       return res.status(401).json({ error: "Usuario o contraseña incorrectos" });
     }
 
-    // Iniciar sesión y redirigir
-    req.session.userId = user.id;
+    req.session.userId = user.id; // Guardar ID del usuario en la sesión
     res.redirect("/dashboard"); // Redirigir al dashboard
   } catch (error) {
     console.error(error);
@@ -63,8 +73,9 @@ exports.loginUser = async (req, res) => {
 exports.logoutUser = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.status(500).send('No se pudo cerrar la sesión.');
+      return res.status(500).send("No se pudo cerrar la sesión.");
     }
-    res.redirect('/home.html'); // Redirigir a la página de inicio
+    res.redirect("/"); // Redirigir a la página de inicio
   });
 };
+

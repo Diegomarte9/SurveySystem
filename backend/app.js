@@ -1,7 +1,6 @@
 require('dotenv').config();  // Cargar las variables de entorno del archivo .env
 const express = require('express');
-const session = require('express-session');
-const sessionSecret = process.env.SESSION_SECRET;
+const session = require('express-session');  // Importar express-session
 const path = require('path');
 const pool = require('./models/db');  // Importar la configuración de la base de datos
 const authController = require('./controllers/authController');
@@ -16,25 +15,36 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configuración de sesiones
 app.use(session({
-  secret: sessionSecret,  // Aquí estamos utilizando la clave secreta cargada desde el .env
+  secret: process.env.SESSION_SECRET || 'Diegomarte',  // Usa una clave secreta fuerte desde el archivo .env o una clave predeterminada
   resave: false,
   saveUninitialized: true,
 }));
 
+// Servir todos los archivos estáticos desde la carpeta frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Ruta para la página principal (home.html)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/home.html'));
+});
+
+// Ruta para el dashboard (dashboard.html)
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dashboard/dashboard.html'));
+});
+
 // Rutas para login y registro
 app.post('/login', authController.loginUser);
 app.post('/register', authController.registerUser);
-app.post('/logout', authController.logoutUser);
+app.post('/logout', authController.logoutUser); // Definir correctamente la ruta de logout
 
 // Ruta para dashboard
-app.get('/dashboard', dashboardController.dashboardPage);
+// Si estás usando el controlador
+// app.get('/dashboard', dashboardController.dashboardPage);
 
 // Rutas para recuperación de contraseña
 app.post('/send-recovery-email', passwordController.sendRecoveryEmail);
 app.post('/verify-code', passwordController.verifyCode);
-
-// Servir archivos estáticos (para frontend)
-app.use(express.static(path.join(__dirname, 'frontend')));
 
 // Conexión a la base de datos (verificación)
 pool.connect()
