@@ -7,5 +7,5 @@ exports.dashboardPage = (req, res) => {
   }
 
   // Si está autenticado, mostrar la página del dashboard
-  res.sendFile(path.join(__dirname, "../frontend/dashboard", "dashboard.html"));
+  res.sendFile(path.join(__dirname, "../frontend/pages", "dashboard.html"));
 };

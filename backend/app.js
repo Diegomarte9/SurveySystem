@@ -15,32 +15,37 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configuración de sesiones
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'Diegomarte',  // Usa una clave secreta fuerte desde el archivo .env o una clave predeterminada
+  secret: process.env.SESSION_SECRET || 'Diegomarte',
   resave: false,
   saveUninitialized: true,
 }));
 
-// Servir todos los archivos estáticos desde la carpeta frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Servir todos los archivos estáticos desde la carpeta frontend/assets
+app.use(express.static(path.join(__dirname, '../frontend/assets')));
+
+
+app.use(express.static(path.join(__dirname, '../frontend/pages')));
 
 // Ruta para la página principal (home.html)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/home.html'));
+  res.sendFile(path.join(__dirname, '../frontend/pages/home.html'));
 });
 
 // Ruta para el dashboard (dashboard.html)
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dashboard/dashboard.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/pages/home.html'));
 });
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/pages/dashboard.html'));
+});
+
 
 // Rutas para login y registro
 app.post('/login', authController.loginUser);
 app.post('/register', authController.registerUser);
-app.post('/logout', authController.logoutUser); // Definir correctamente la ruta de logout
-
-// Ruta para dashboard
-// Si estás usando el controlador
-// app.get('/dashboard', dashboardController.dashboardPage);
+// Ruta para cerrar sesión
+app.post('/logout', authController.logoutUser);  // Asegúrate de que esta ruta esté bien configurada
 
 // Rutas para recuperación de contraseña
 app.post('/send-recovery-email', passwordController.sendRecoveryEmail);
@@ -50,7 +55,7 @@ app.post('/verify-code', passwordController.verifyCode);
 pool.connect()
   .then(client => {
     console.log("Conexión exitosa a la base de datos PostgreSQL");
-    client.release();  // Liberar el cliente después de la verificación
+    client.release();
   })
   .catch(err => {
     console.error("Error de conexión a la base de datos:", err.message);

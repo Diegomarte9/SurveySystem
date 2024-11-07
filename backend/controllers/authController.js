@@ -69,13 +69,15 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-// Cerrar sesión de usuario
+// Controlador para cerrar sesión
 exports.logoutUser = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.status(500).send("No se pudo cerrar la sesión.");
+      return res.status(500).send("Error al cerrar sesión");
     }
-    res.redirect("/"); // Redirigir a la página de inicio
+    res.clearCookie('connect.sid');  // Eliminar la cookie de sesión en el navegador
+    return res.redirect('/');  // Redirigir a la página de inicio o donde quieras
   });
 };
+
 
