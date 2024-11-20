@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background: #eaeaea;
+    background: linear-gradient(to right, #e2e2e2, #B0413E);
+
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 8%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
+
+.logo{
+    font-size: 25px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+
+}
+
+.navbar a {
+    display: inline-flex;
+    font-size: 20px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 20px;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navbar a:hover,
+.navbar a.active{
+    color: #780000;
+}
+
+.social-media{
+    width: 200px;
+    height: 40px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.home{
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 50px 8% 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+.home-content{
+    max-width: 700px;
+}
+
+.home-content h1{
+    font-size: 50px;
+    line-height: 1.2;
+    color: #780000;
+
+}
+
+.home-content p{
+    font-size: 16px;
+    margin: 15px 0 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #780000;
+    border: 2px solid #780000;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); 
+    font-size: 16px;
+    color: #eaeaea;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn:hover{
+    background: transparent;
+    color: #780000;
+    transition: .5s;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+
+.mi-imagen {
+    width: 800px;
+    max-width: 800px; 
+    height: auto; 
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+}
+
+.footer{
+    text-align: center;
+    color: #222;
+    padding: 25px;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+/*Transiciones*/
+
+@keyframes slideRight{
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft{
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop{
+    0%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideSci{
+    0% {
+        transform: translateX(100px) rotate(45deg);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(0) rotate(45deg);
+        opacity: 1;
+    }
+}
