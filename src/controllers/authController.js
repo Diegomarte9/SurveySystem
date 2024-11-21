@@ -28,6 +28,13 @@ exports.register = async (req, res) => {
     // Actualizar la última fecha de inicio de sesión después del registro
     await pool.query("UPDATE users SET last_login = $1 WHERE email = $2", [currentTimestamp, email]);
 
+    // Almacenar en la sesión la información del usuario
+    req.session.user = {
+      id: existingUser.rows[0].id,
+      name: name,
+      email: email
+    };
+
     // Redirigir al dashboard después del registro exitoso
     res.status(201).sendFile(path.join(__dirname, "..", "..", "pages", "dashboard", "dashboard.html"));
   } catch (error) {
@@ -56,6 +63,13 @@ exports.login = async (req, res) => {
     // Registrar la hora del último inicio de sesión
     const currentTimestamp = new Date();
     await pool.query("UPDATE users SET last_login = $1 WHERE email = $2", [currentTimestamp, email]);
+
+    // Almacenar en la sesión la información del usuario
+    req.session.user = {
+      id: user.rows[0].id,
+      name: user.rows[0].name,
+      email: user.rows[0].email
+    };
 
     // Redirigir al dashboard después del inicio de sesión exitoso
     res.status(200).sendFile(path.join(__dirname, "..", "..", "pages", "dashboard", "dashboard.html"));

@@ -44,3 +44,15 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/user')
+      .then(response => response.json())
+      .then(user => {
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userEmail').textContent = user.email;
+      })
+      .catch(error => {
+        console.error("No autenticado", error);
+      });
+});

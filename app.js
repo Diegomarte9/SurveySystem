@@ -1,11 +1,19 @@
 require("dotenv").config();
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 const pool = require("./src/database/connectDB");
 const homeRoutes = require("./src/routes/homeRoutes");
 const loginRoutes = require("./src/routes/loginRoutes");
 const authRoutes = require("./src/routes/authRoutes");
 const app = express();
+
+// Middleware de sesión
+app.use(session({
+  secret: "SECRET1234",
+  resave: false,
+  saveUninitialized: true,
+}));
 
 // Middleware para parsear JSON y datos de formularios
 app.use(express.json());
