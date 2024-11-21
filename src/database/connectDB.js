@@ -10,7 +10,7 @@ const client = new Client({
 });
 
 client.connect()
-    .then(() => console.log("Conexión a la base de datos exitosa"))
+    .then(() => console.log("Conexión a la base de datos en PostgreSQL exitosa"))
     .catch(err => console.error("Error de conexión a la base de datos", err));
 
 module.exports = client;

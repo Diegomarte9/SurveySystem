@@ -1,4 +1,4 @@
--- Tabla de usuarios actualizada
+-- Tabla de usuarios
 CREATE TABLE users (
     id SERIAL PRIMARY KEY, -- Identificador único del usuario
     name VARCHAR(100) NOT NULL, -- Nombre del usuario

@@ -4,17 +4,20 @@ const path = require("path");
 const pool = require("./src/database/connectDB");
 const homeRoutes = require("./src/routes/homeRoutes");
 const loginRoutes = require("./src/routes/loginRoutes");
+const authRoutes = require("./src/routes/authRoutes");
 const app = express();
 
-// Middleware para manejar JSON
+// Middleware para parsear JSON y datos de formularios
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Middleware para servir archivos estáticos
+// Servir archivos estáticos globalmente en la carpeta pages
 app.use(express.static(path.join(__dirname, "pages")));
 
 // Usar las rutas definidas en otros archivos
-app.use("/", homeRoutes);  // Para la página principal
+app.use("/", homeRoutes);
 app.use("/login", loginRoutes);
+app.use("/", authRoutes);
 
 // Iniciar el servidor en el puerto especificado
 const PORT = process.env.PORT || 3000;
