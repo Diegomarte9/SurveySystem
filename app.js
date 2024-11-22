@@ -19,6 +19,11 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
+  next();
+});
+
 // Servir archivos estáticos globalmente en la carpeta pages
 app.use(express.static(path.join(__dirname, "pages")));
 

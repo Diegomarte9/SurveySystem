@@ -1,16 +1,18 @@
+CREATE DATABASE SurveySystem
+
 -- Tabla de usuarios
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY, -- Identificador único del usuario
-    name VARCHAR(100) NOT NULL, -- Nombre del usuario
-    email VARCHAR(100) UNIQUE NOT NULL, -- Email único
-    password VARCHAR(255) NOT NULL, -- Contraseña (encriptada)
-    is_verified BOOLEAN DEFAULT FALSE, -- Estado de verificación del correo
-    verification_token VARCHAR(6), -- Código de verificación por email
-    verification_token_expires_at TIMESTAMP, -- Fecha de expiración del código de verificación
-    reset_password_token VARCHAR(255), -- Token para restablecer la contraseña
-    reset_password_expires_at TIMESTAMP, -- Fecha de expiración del token de restablecimiento
-    last_login TIMESTAMP, -- Fecha y hora del último inicio de sesión
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación del registro
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    is_verified BOOLEAN DEFAULT FALSE,
+    verification_token VARCHAR(6),
+    verification_token_expires_at TIMESTAMP,
+    reset_password_token VARCHAR(255),
+    reset_password_expires_at TIMESTAMP,
+    last_login TIMESTAMP, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

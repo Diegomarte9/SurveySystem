@@ -40,12 +40,12 @@
             <h3 class="sidebar__title">Inicio</h3>
 
             <div class="sidebar__list">
-              <a href="dashboard.html" class="sidebar__link active-link">
+              <a href="dashboard.html" class="sidebar__link">
                 <i class="ri-home-line"></i>
                 <span>Inicio</span>
               </a>
 
-              <a href="/dashboard/encuestas.html" class="sidebar__link">
+              <a href="encuestas.html" class="sidebar__link active-link">
                 <i class="ri-survey-line"></i>
                 <span>Encuestas</span>
               </a>
@@ -100,7 +100,25 @@
     </nav>
 
     <main class="main container" id="main">
-      <h1>Trabajando para servirte :)</h1>
+      <div class="container">
+        <h1>Comienza a crear tu encuesta</h1>
+        <form id="surveyForm">
+          <div class="form-group">
+            <label for="surveyTitle">Título de la encuesta:</label>
+            <input type="text" id="surveyTitle" placeholder="Ingrese el título" required>
+          </div>
+          <div class="form-group">
+            <label for="surveyDescription">Descripción (opcional):</label>
+            <textarea id="surveyDescription" placeholder="Ingrese una descripción"></textarea>
+          </div>
+          <div id="questionsContainer">
+          </div>
+          
+          <button type="button" id="addQuestion">Agregar Pregunta</button>
+          <button type="submit">Guardar Encuesta</button>
+        </form>
+      </div>
+      <script src="/dashboard/script.js"></script>
     </main>
 
     <script src="/dashboard/main.js"></script>

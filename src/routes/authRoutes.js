@@ -15,4 +15,15 @@ router.get("/api/user", (req, res) => {
     }
   });
 
+// Ruta para cerrar sesión
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+      return res.status(500).send("No se pudo cerrar la sesión.");
+    }
+    res.redirect("/home/home.html");
+  });
+});
+
 module.exports = router;

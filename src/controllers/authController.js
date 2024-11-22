@@ -19,18 +19,21 @@ exports.register = async (req, res) => {
     // Registrar la fecha y hora actual (creación del usuario)
     const currentTimestamp = new Date();
 
-    // Insertar el usuario en la base de datos
-    await pool.query(
-      "INSERT INTO users (name, email, password, created_at) VALUES ($1, $2, $3, $4)",
+    // Insertar el usuario en la base de datos y obtener su ID
+    const insertResult = await pool.query(
+      "INSERT INTO users (name, email, password, created_at) VALUES ($1, $2, $3, $4) RETURNING id",
       [name, email, hashedPassword, currentTimestamp]
     );
 
+    // Recuperar el ID del usuario recién creado
+    const userId = insertResult.rows[0].id;
+
     // Actualizar la última fecha de inicio de sesión después del registro
-    await pool.query("UPDATE users SET last_login = $1 WHERE email = $2", [currentTimestamp, email]);
+    await pool.query("UPDATE users SET last_login = $1 WHERE id = $2", [currentTimestamp, userId]);
 
     // Almacenar en la sesión la información del usuario
     req.session.user = {
-      id: existingUser.rows[0].id,
+      id: userId,
       name: name,
       email: email
     };
@@ -38,7 +41,7 @@ exports.register = async (req, res) => {
     // Redirigir al dashboard después del registro exitoso
     res.status(201).sendFile(path.join(__dirname, "..", "..", "pages", "dashboard", "dashboard.html"));
   } catch (error) {
-    console.error(error);
+    console.error("Error en el registro:", error.message);
     res.status(500).send("Error al registrar el usuario.");
   }
 };

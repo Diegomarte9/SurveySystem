@@ -56,3 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("No autenticado", error);
       });
 });
+
+document.getElementById("logoutButton").addEventListener("click", () => {
+  fetch("/auth/logout")
+    .then(() => {
+      window.location.href = "/home/home.html";
+    })
+    .catch((error) => console.error("Error al cerrar sesión:", error));
+});

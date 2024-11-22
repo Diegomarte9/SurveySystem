@@ -35,9 +35,9 @@ const createDatabaseAndTables = async () => {
     // Configurar conexión a la nueva base de datos
     const dbClient = new Client({
       user: 'tu_usuario', //  (Recuerda que estas seran las credenciales con las que crearas tu base de datos, estos datos debes de configurarlos en tu archivo .env)
-      host: 'localhost',
+      host: 'localhost', //No cambiar esto
       password: 'tu_contraseña',
-      port: 5432,
+      port: 5432, // Solo cambiar si tu puerto de postgreSQL es diferente
       database: 'SurveySystem', // No cambiar esto
     });
 

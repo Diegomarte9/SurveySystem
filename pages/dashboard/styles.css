@@ -109,7 +109,7 @@ body.dark-theme {
   display: inline-flex;
   align-items: center;
   column-gap: .25rem;
-  color: black;
+  color: rgb(243, 15, 15);
   font-size: 45px;
 }
 
