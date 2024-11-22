@@ -26,6 +26,11 @@ DB_PORT=5432
 ### Puerto del servidor
 PORT=3000
 
+## Dependencias a instalar 
+
+### Instala la dependencia
+npm install express-session
+
 ## Implementaciones y mejorar a añadir.
 
 1- Habilitar los formularios de verificacion, ya sea: forgotpassword.html y verification.html
