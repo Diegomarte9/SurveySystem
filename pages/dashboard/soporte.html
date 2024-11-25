@@ -10,6 +10,118 @@
     <link rel="stylesheet" href="/dashboard/styles.css" />
 
     <title>Encuestify.</title>
+
+    <style>
+      /* Contenedor principal para soporte */
+      #support-main {
+        width: 720px;
+        height: auto;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        padding: 40px 50px;
+        margin: 20px auto;
+        margin-top: 150px;
+      }
+
+      #support-main h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      #support-main p {
+        font-size: 1rem;
+        color: #555;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        outline: none;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group textarea {
+        resize: none;
+        height: 100px;
+      }
+
+      .btn-main {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-main:hover {
+        background-color: #0056b3;
+      }
+
+      /* Sección de Preguntas Frecuentes */
+      .faq-section {
+        margin-top: 40px;
+      }
+
+      .faq-section h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .faq {
+        margin-bottom: 20px;
+      }
+
+      .faq h3 {
+        font-size: 1.2rem;
+        color: #007bff;
+        cursor: pointer;
+        margin-bottom: 5px;
+      }
+
+      .faq p {
+        font-size: 1rem;
+        color: #555;
+        display: none; /* Ocultamos las respuestas por defecto */
+        margin-left: 10px;
+      }
+
+      /* Mostrar respuesta al hacer clic */
+      .faq.active p {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <header class="header" id="header">
@@ -99,9 +211,81 @@
       </div>
     </nav>
 
-    <main class="main container" id="main">
-      <h1>Pestaña de Soporte, preparando todo para ti :)</h1>
+    <main class="main-container" id="support-main">
+      <div class="container">
+        <h1>Centro de Soporte</h1>
+        <p>
+          ¿Tienes preguntas o necesitas ayuda? Completa el formulario y nos
+          pondremos en contacto contigo lo antes posible.
+        </p>
+
+        <form id="supportForm">
+          <div class="form-group">
+            <label for="supportName">Nombre:</label>
+            <input
+              type="text"
+              id="supportName"
+              placeholder="Ingrese su nombre"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="supportEmail">Correo Electrónico:</label>
+            <input
+              type="email"
+              id="supportEmail"
+              placeholder="Ingrese su correo electrónico"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="supportMessage">Mensaje:</label>
+            <textarea
+              id="supportMessage"
+              placeholder="Describa su consulta o problema"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-main">Enviar Mensaje</button>
+        </form>
+
+        <section class="faq-section">
+          <h2>Preguntas Frecuentes</h2>
+          <div class="faq">
+            <h3>¿Cómo creo una encuesta?</h3>
+            <p>
+              Puedes crear una encuesta desde el menú principal seleccionando la
+              opción "Encuestas". Luego, completa los campos necesarios y guarda
+              tu encuesta.
+            </p>
+          </div>
+          <div class="faq">
+            <h3>¿Cómo puedo restablecer mi contraseña?</h3>
+            <p>
+              Accede a la página de inicio de sesión y haz clic en "Olvidé mi
+              contraseña". Sigue las instrucciones enviadas a tu correo.
+            </p>
+          </div>
+          <div class="faq">
+            <h3>¿Cómo contacto al soporte técnico?</h3>
+            <p>
+              Rellena el formulario de esta página o envíanos un correo
+              directamente a soporte@encuestify.com.
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
+
+    <script>
+      document.querySelectorAll(".faq h3").forEach((faqTitle) => {
+        faqTitle.addEventListener("click", () => {
+          const faq = faqTitle.parentElement;
+          faq.classList.toggle("active"); // Alterna la clase active para mostrar/ocultar la respuesta
+        });
+      });
+    </script>
+    
 
     <script src="/dashboard/main.js"></script>
   </body>

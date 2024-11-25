@@ -86,4 +86,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionDiv = document.getElementById(`questionDiv_${questionId}`);
     questionDiv.remove();
   }
-  

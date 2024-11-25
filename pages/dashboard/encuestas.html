@@ -10,6 +10,88 @@
     <link rel="stylesheet" href="/dashboard/styles.css" />
 
     <title>Encuestify.</title>
+
+    <style>
+      .main-container {
+        width: 920px;
+        height: auto;
+        background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px); /* Efecto de desenfoque */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 15px; /* Bordes más redondeados */
+        padding: 40px 50px; /* Más espacio interior */
+        margin: 20px auto; /* Centrado con margen automático */
+      }
+    
+      .main-container h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333; /* Color del texto */
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    
+      .form-group {
+        margin-bottom: 20px; /* Espacio entre los campos del formulario */
+      }
+    
+      .form-group label {
+        display: block; /* Asegura que el label esté arriba del input */
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 5px;
+      }
+    
+      .form-group input,
+      .form-group textarea {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        outline: none;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+      }
+    
+      .form-group textarea {
+        resize: none; /* Desactiva el redimensionado */
+        height: 80px; /* Altura predeterminada */
+      }
+    
+      #questionsContainer {
+        margin-bottom: 20px; /* Espacio antes de los botones */
+      }
+    
+      /* Estilos específicos para los botones del contenedor */
+      .btn-main {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Color azul para los botones */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px; /* Espaciado entre botones */
+        transition: background-color 0.3s ease;
+      }
+    
+      .btn-main:hover {
+        background-color: #0056b3; /* Oscurece el azul al pasar el mouse */
+      }
+    
+      .btn-main[type="submit"] {
+        background-color: #28a745; /* Color verde para el botón de guardar */
+      }
+    
+      .btn-main[type="submit"]:hover {
+        background-color: #218838;
+      }
+    </style>    
+    
   </head>
   <body>
     <header class="header" id="header">
@@ -99,7 +181,7 @@
       </div>
     </nav>
 
-    <main class="main container" id="main">
+    <main class="main-container" id="main">
       <div class="container">
         <h1>Comienza a crear tu encuesta</h1>
         <form id="surveyForm">
@@ -114,8 +196,8 @@
           <div id="questionsContainer">
           </div>
           
-          <button type="button" id="addQuestion">Agregar Pregunta</button>
-          <button type="submit">Guardar Encuesta</button>
+          <button type="button" id="addQuestion" class="btn-main">Agregar Pregunta</button>
+          <button type="submit" class="btn-main">Guardar Encuesta</button>
         </form>
       </div>
       <script src="/dashboard/script.js"></script>

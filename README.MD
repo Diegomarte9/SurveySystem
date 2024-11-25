@@ -19,11 +19,11 @@ Este script nos creara la base de datos llamada SurveySystem de manera automatic
 
 ```bash
 ### Configuración de PostgreSQL
-DB_USER= Tu usuario
+DB_USER= Tu usuario # Cambiar por tu Usuario
 DB_HOST=localhost
-DB_NAME=SurveySystem
-DB_PASSWORD= Tu contraseña
-DB_PORT=5432
+DB_NAME=SurveySystem # Mantener este nombre
+DB_PASSWORD= Tu contraseña # Cambiar por tu contraseña
+DB_PORT=5432 # Cambiar solo si tu puerto de PostgreSQL es diferente.
 
 ### Puerto del servidor
 PORT=3000
@@ -76,4 +76,3 @@ nodemon app.js
 8- Organizar mejor carpeta Dashboard
 
 9- Implementar Docker
-

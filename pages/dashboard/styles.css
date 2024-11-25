@@ -42,6 +42,11 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   transition: background-color .4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
 a {
@@ -270,7 +275,6 @@ body.dark-theme {
   height: 20px;
   background-color: var(--first-color);
 }
-
 
 @media screen and (max-width: 360px) {
   .header__container {
