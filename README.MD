@@ -15,6 +15,8 @@ Este script nos creara la base de datos llamada SurveySystem de manera automatic
 #### En caso de que este script falle hacerlo manualmente desde PostgreSQL usando el contenido de Schema.SQL en la carpeta database
 
 ## Configuracion de archivo .env
+#### Se debe crear un archivo .env en la raiz del proyecto para poder conectarse con el servidor.
+
 ```bash
 ### Configuración de PostgreSQL
 DB_USER= Tu usuario
@@ -31,9 +33,30 @@ PORT=3000
 ### Instala la dependencia
 
 1. **Express-Session**
+
 ```bash
 npm install express-session
 ```
+## Inicio del Servidor 
+
+### Para iniciar el servidor, se debe ejecutar el siguiente comando en la terminar en la carperta raiz del proyecto.
+
+```bash
+node app.js
+```
+
+#### Para reiniciar el servidor node escribir lo siguiente en la terminal:
+
+```bash
+rs
+```
+
+### Para iniciar el servidor y que se reinicie cada vez que se haga un cambio en el Backend utilizar el siguiente comando en terminal:
+
+```bash
+nodemon app.js
+```
+
 ## Implementaciones y mejorar a añadir.
 
 1- Habilitar los formularios de verificacion, ya sea: forgotpassword.html y verification.html
