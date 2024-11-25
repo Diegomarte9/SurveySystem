@@ -15,7 +15,7 @@ Este script nos creara la base de datos llamada SurveySystem de manera automatic
 #### En caso de que este script falle hacerlo manualmente desde PostgreSQL usando el contenido de Schema.SQL en la carpeta database
 
 ## Configuracion de archivo .env
-
+```bash
 ### Configuración de PostgreSQL
 DB_USER= Tu usuario
 DB_HOST=localhost
@@ -25,12 +25,15 @@ DB_PORT=5432
 
 ### Puerto del servidor
 PORT=3000
-
+```
 ## Dependencias a instalar 
 
 ### Instala la dependencia
-npm install express-session
 
+1. **Express-Session**
+```bash
+npm install express-session
+```
 ## Implementaciones y mejorar a añadir.
 
 1- Habilitar los formularios de verificacion, ya sea: forgotpassword.html y verification.html
@@ -48,4 +51,6 @@ npm install express-session
 7- Añadir pantalla de carga entre el Login y el Dashboard para dar un tiempo de carga de los elementos y una buena presentacion del dashboard
 
 8- Organizar mejor carpeta Dashboard
+
+9- Implementar Docker
 
