@@ -1,6 +1,12 @@
 # Sistema de Encuestas en HTML, CSS, JS, NODE.JS, EXPRESS
 Hola esta es un introduccion a este sistema de encuestas inteligente.
 
+#### Desarrollado por Diego Marte, estudiante del Tecnico Superior en Desarrollo de Aplicaciones Multiplataforma.
+
+##### Esta no es la version final del proyecto.
+
+##### Para cualquier sugerencia desde la pestaña soporte, funcionando tanto con live server y con el servidor express, pueden dejarme cualquier duda y sugerencia.
+
 El sistema tiene las siguientes funciones.
 
 1. Una pestaña Home simple la cual tiene un boton que nos llevara al login.
