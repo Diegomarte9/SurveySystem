@@ -3,8 +3,20 @@ Hola esta es un introduccion a este sistema de encuestas inteligente.
 
 El sistema tiene las siguientes funciones.
 
-1- Una pestaña Home simple la cual tiene un boton que nos llevara al login.
-2- En la pestaña login tenemos un cuadro para el login y otro para registro ambos funcionales y pueden modificarse su backend desde authController.js.
+1. Una pestaña Home simple la cual tiene un boton que nos llevara al login.
+
+2. En la pestaña login tenemos un cuadro para el login y otro para registro ambos funcionales y pueden modificarse su backend desde authController.js.
+
+3. En el dashboard, tenemos la pestana principal donde saldran los graficos.
+
+Funcionales actualmente:
+    
+    Tenemos encuesta, que es donde crearemos nuestra encuesta.
+
+    Usuario, donde el usuario podra cambiar sus datos.
+
+    Soporte donde el usuario podra reportar algun problema o pregunta que tenga sobre la pagaina.
+
 
 ## Arquitectura del proyecto
 
@@ -72,7 +84,7 @@ SurveySystem
 
     - app.js: Punto de entrada del servidor Node.js (Express).
 
-    -   package.json: Configuración de dependencias del proyecto.
+    - package.json: Configuración de dependencias del proyecto.
 
     - .env: Archivo para almacenar configuraciones sensibles como credenciales o URLs.
 
@@ -81,7 +93,7 @@ SurveySystem
 1. **Clona el repositorio**
 
 ```bash
-https://github.com/Diegomarte9/SurveySystem.git`
+https://github.com/tu_usuario/SurveySystem.git`
 cd SurveySystem
 ```
 
@@ -136,7 +148,7 @@ PORT=3000
 
 ## Inicio del Servidor 
 
-### Para iniciar el servidor, se debe ejecutar el siguiente comando en la terminar en la carperta raiz del proyecto.
+### Para iniciar el servidor, se debe ejecutar el siguiente comando en la terminal en la carperta raiz del proyecto.
 
 ```bash
 node app.js
