@@ -12,8 +12,7 @@
     <title>Encuestify.</title>
 
     <style>
-      /* Contenedor principal para soporte */
-      #support-main {
+      #main {
         width: 720px;
         height: auto;
         background: rgba(255, 255, 255, 0.1);
@@ -26,7 +25,7 @@
         margin-top: 150px;
       }
 
-      #support-main h1 {
+      #main h1 {
         font-size: 2rem;
         font-weight: bold;
         color: #333;
@@ -34,26 +33,26 @@
         margin-bottom: 20px;
       }
 
-      #support-main p {
+      #main p {
         font-size: 1rem;
         color: #555;
         text-align: center;
         margin-bottom: 30px;
       }
 
-      .form-group {
+      #main {
         margin-bottom: 20px;
       }
 
-      .form-group label {
+      #main label {
         display: block;
         font-size: 1rem;
         color: #555;
         margin-bottom: 5px;
       }
 
-      .form-group input,
-      .form-group textarea {
+      #main input,
+      #main textarea {
         width: 100%;
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.2);
@@ -64,7 +63,7 @@
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
       }
 
-      .form-group textarea {
+      #main textarea {
         resize: none;
         height: 100px;
       }
@@ -87,7 +86,6 @@
         background-color: #0056b3;
       }
 
-      /* Sección de Preguntas Frecuentes */
       .faq-section {
         margin-top: 40px;
       }
@@ -113,11 +111,10 @@
       .faq p {
         font-size: 1rem;
         color: #555;
-        display: none; /* Ocultamos las respuestas por defecto */
+        display: none;
         margin-left: 10px;
       }
 
-      /* Mostrar respuesta al hacer clic */
       .faq.active p {
         display: block;
       }
@@ -211,7 +208,7 @@
       </div>
     </nav>
 
-    <main class="main-container" id="support-main">
+    <main class="main-container" id="main">
       <div class="container">
         <h1>Centro de Soporte</h1>
         <p>
@@ -219,12 +216,13 @@
           pondremos en contacto contigo lo antes posible.
         </p>
 
-        <form id="supportForm">
+        <form action="https://formspree.io/f/mvgogqvn" method="POST" id="supportForm">
           <div class="form-group">
             <label for="supportName">Nombre:</label>
             <input
               type="text"
               id="supportName"
+              name="name"
               placeholder="Ingrese su nombre"
               required
             />
@@ -234,6 +232,7 @@
             <input
               type="email"
               id="supportEmail"
+              name="email"
               placeholder="Ingrese su correo electrónico"
               required
             />
@@ -243,6 +242,7 @@
             <textarea
               id="supportMessage"
               placeholder="Describa su consulta o problema"
+              name="message"
               required
             ></textarea>
           </div>
@@ -281,7 +281,7 @@
       document.querySelectorAll(".faq h3").forEach((faqTitle) => {
         faqTitle.addEventListener("click", () => {
           const faq = faqTitle.parentElement;
-          faq.classList.toggle("active"); // Alterna la clase active para mostrar/ocultar la respuesta
+          faq.classList.toggle("active"); 
         });
       });
     </script>
